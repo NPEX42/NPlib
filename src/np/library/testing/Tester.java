@@ -2,6 +2,7 @@ package np.library.testing;
 import java.lang.reflect.*;
 
 import np.library.common.Timer;
+import np.library.exceptions.TestFailedSignal;
 public class Tester {
 	@SuppressWarnings("deprecation")
 	public static boolean Test(Class<?> clazz) {

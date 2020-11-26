@@ -1,4 +1,4 @@
-package np.library.testing;
+package np.library.exceptions;
 
 public class TestFailedSignal extends RuntimeException {
 	private static final long serialVersionUID = 1L;
