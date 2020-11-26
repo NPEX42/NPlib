@@ -22,11 +22,3 @@ jobs:
         java-version: 1.8
     - name: Build with Ant
       run: ant -noinput -buildfile build.xml
-    - name: Create release
-      uses: Roang-zero1/github-create-release-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Create GitHub release
-      uses: Roang-zero1/github-upload-release-artifacts-action@master
-      with:
-        args: dist/lib/ 
