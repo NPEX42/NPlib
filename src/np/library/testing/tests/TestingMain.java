@@ -9,7 +9,9 @@ import np.library.testing.Tester;
 public class TestingMain {
 
 	public static void main(String[] args) {
-		if(Tester.Test(LoggerTests.class)) System.out.println("Passed!");
+		if(Tester.Test(LoggerTests.class)) System.out.println("LoggerTests Passed!");
+		
+		if(Tester.Test(DeviceTests.class)) System.out.println("DeviceTests Passed!");
 		
 		try {
 			FileWatcher watcher = new TestFileWatcher();
