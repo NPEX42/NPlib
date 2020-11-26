@@ -18,6 +18,6 @@ public class Tester {
 	} 
 
 	public static void Fail(String message) {
-		throw new TestailedSignal(message);
+		throw new TestFailedSignal(message);
 	}
 }
