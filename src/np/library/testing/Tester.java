@@ -17,6 +17,6 @@ public class Tester {
 	} 
 
 	public static void Fail(String message) {
-		throw new TestFailedSignal(message);
+		throw new TestailedSignal(message);
 	}
 }
