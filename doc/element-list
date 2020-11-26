@@ -1,2 +1,5 @@
 np.library.common
+np.library.common.strings
+np.library.io
 np.library.testing
+np.library.testing.tests

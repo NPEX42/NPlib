@@ -17,9 +17,7 @@ public abstract class FileWatcher {
 	@SuppressWarnings("unused")
 	public void RegisterDir(File dir) {
 		try {
-			System.out.println("Directory '"+dir.isDirectory()+"'");
 			if(!dir.isDirectory()) return;
-			System.out.println("Registering Directory '"+dir+"'");
 			WatchKey key = Path.of(dir.getPath()).register(watcher, ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY);
 		} catch (Exception ex) {
 			System.out.println(ex);
@@ -36,9 +34,7 @@ public abstract class FileWatcher {
 	
 	@SuppressWarnings("unchecked")
 	private void AsyncPollEvents() {
-		System.out.println("Started Loop");
 		for (;;) {
-			System.out.println("Loop Loop");
 		    // wait for key to be signaled
 		    WatchKey key = null;
 		    try {
@@ -50,7 +46,6 @@ public abstract class FileWatcher {
 		    for (WatchEvent<?> event: key.pollEvents()) {
 		        WatchEvent.Kind<?> kind = event.kind();
 		        
-		        System.out.println(kind);
 
 		        // This key is registered only
 		        // for ENTRY_CREATE events,
@@ -85,7 +80,6 @@ public abstract class FileWatcher {
 		    // the directory is inaccessible so exit the loop.
 		    boolean valid = key.reset();
 		    if (!valid) {
-		    	System.out.println(valid);
 		        break;
 		    }
 		}
