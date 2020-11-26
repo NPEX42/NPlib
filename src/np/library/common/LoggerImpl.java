@@ -9,7 +9,15 @@ class LoggerImpl extends Logger {
 		super(clazz);
 	}
 
-	public void Info(Object... args) {}
-	public void Debug(Object... args) {}
-	public void Warn(Object... args) {}
+	public void Info(Object... args) {Print(args);}
+	public void Debug(Object... args) {Print(args);}
+	public void Warn(Object... args) {Print(args);}
+	
+	private void Print(Object... args) {
+		System.out.print("["+name+"]: ");
+		for(Object obj : args) System.out.print(obj);
+		System.out.println();
+	}
+	
+	
 }

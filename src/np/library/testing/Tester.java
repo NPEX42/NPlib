@@ -1,14 +1,34 @@
 package np.library.testing;
 import java.lang.reflect.*;
+
+import np.library.common.Timer;
 public class Tester {
-	public static boolean Test(Class<?> clazz, Object instance) {
+	@SuppressWarnings("deprecation")
+	public static boolean Test(Class<?> clazz) {
+		Object instance;
+		try {
+			instance = clazz.newInstance();
+		} catch (Exception ex) {
+			throw new TestFailedSignal("Test Must Have A Public Default Constructor...");
+		}
+		
+		Timer timer = new Timer();
+		
 		for(Method method : clazz.getDeclaredMethods()) {
 			if(method.getAnnotation(Test.class) != null) {
 				try {
+					timer.Start();
 					method.invoke(instance, new Object[0]);
+					float time = timer.GetTimeSeconds();
+					System.out.println("Ran "+method.getName()+" Completed In "+time+" Seconds...");
 				} catch (TestFailedSignal tfex) {
 					System.out.println(tfex.getMessage());
 					return false;
+				} catch (InvocationTargetException itex) {
+					if(itex.getCause() instanceof TestFailedSignal) {
+						System.out.println(((TestFailedSignal)itex.getCause()).getMessage());
+						return false;
+					}
 				} catch (Exception ex) {
 					return false;
 				}

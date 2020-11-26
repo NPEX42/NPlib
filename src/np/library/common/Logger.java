@@ -1,7 +1,10 @@
 package np.library.common;
 
+import np.library.common.strings.StringFormatter;
+
 public abstract class Logger {
 	protected final String name;
+	protected StringFormatter formatter;
 
 	public abstract void Info(Object... args);
 	public abstract void Debug(Object... args);
@@ -12,7 +15,7 @@ public abstract class Logger {
 	}
 
 	protected Logger(Class<?> clazz) {
-		this(clazz.getSimpleName());
+		this(clazz.getName());
 	}
 
 	public static Logger CreateNew(Class<?> clazz) {
