@@ -7,6 +7,7 @@ public class Tester {
 				try {
 					method.invoke(instance, new Object[0]);
 				} catch (TestFailedSignal tfex) {
+					System.out.println(tfex.getMessage());
 					return false;
 				} catch (Exception ex) {
 					return false;
