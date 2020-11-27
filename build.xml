@@ -1,4 +1,4 @@
-<project name="NPLib" default="dist" basedir=".">
+<project name="NPLib" default="CI" basedir=".">
   <description>
     simple example build file
   </description>
