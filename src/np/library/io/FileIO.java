@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import np.library.exceptions.DeviceCloseException;
-import np.library.exceptions.DeviceException;
 import np.library.exceptions.DeviceOpenException;
 import np.library.exceptions.DeviceReadException;
 import np.library.exceptions.DeviceWriteException;

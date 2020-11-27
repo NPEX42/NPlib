@@ -14,6 +14,8 @@ public abstract class FileWatcher {
 	protected abstract void OnFileModified(File file);
 	protected abstract void OnFileDeleted(File file);
 	
+	public boolean continueFlag;
+	
 	@SuppressWarnings("unused")
 	public void RegisterDir(File dir) {
 		try {
@@ -32,8 +34,13 @@ public abstract class FileWatcher {
 		return t;
 	}
 	
+	public void StopPolling() {
+		continueFlag = false;
+	}
+	
 	@SuppressWarnings("unchecked")
 	private void AsyncPollEvents() {
+		continueFlag = true;
 		for (;;) {
 		    // wait for key to be signaled
 		    WatchKey key = null;
@@ -79,7 +86,7 @@ public abstract class FileWatcher {
 		    // receive further watch events.  If the key is no longer valid,
 		    // the directory is inaccessible so exit the loop.
 		    boolean valid = key.reset();
-		    if (!valid) {
+		    if (!valid && continueFlag) {
 		        break;
 		    }
 		}

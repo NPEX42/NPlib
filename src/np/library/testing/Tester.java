@@ -24,7 +24,7 @@ public class Tester {
 					System.out.println("Ran "+method.getName()+" Completed In "+time+" Seconds...");
 				} catch (TestFailedSignal tfex) {
 					System.out.println(tfex.getMessage());
-					return false;
+					System.exit(-1);
 				} catch (InvocationTargetException itex) {
 					if(itex.getCause() instanceof TestFailedSignal) {
 						System.out.println(((TestFailedSignal)itex.getCause()).getMessage());

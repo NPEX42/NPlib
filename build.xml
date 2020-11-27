@@ -36,6 +36,16 @@
     <delete dir="${build}"/>
     <delete dir="${dist}"/>
   </target>
+	
+  <target name="CI" depends="dist">
+	  <java failonerror="true" classname="np.library.testing.tests.TestingMain">
+	  	<arg value="-h"/>
+	  	  <classpath>
+	  	    <pathelement location="${dist}/lib/NPLib-${DSTAMP}.jar"/>
+	  	    <pathelement path="${java.class.path}"/>
+	  	  </classpath>
+	  </java>
+  </target>
 
   <target name="doc" depends="init" description="generate documentation">
     <javadoc sourcepath="${src}" destdir="${doc}"/>
