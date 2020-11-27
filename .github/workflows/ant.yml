@@ -22,3 +22,18 @@ jobs:
         java-version: 14
     - name: Build with Ant
       run: ant -noinput -buildfile build.xml
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      with:
+          tag_name: ${{ github.ref }}
+          release_name: Release-Weekly ${{ github.ref }}
+          body: |
+            ![Java CI](https://github.com/NPEX42/NPlib/workflows/Java%20CI/badge.svg) 
+            Weekly Build
+          draft: false
+          prerelease: false
