@@ -19,6 +19,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - name: Build Weekly
+      id: build_weekly
+      run: ant -noinput -buildfile weekly.xml
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
