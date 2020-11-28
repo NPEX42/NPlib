@@ -28,8 +28,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
-          tag_name: Build-$GITHUB_RUN_NUMBER
-          release_name: Build-$GITHUB_RUN_NUMBER
+          tag_name: Build-${{ github.run_number  }}
+          release_name:  Build-Weekly-${{ github.run_number  }}
           body: |
             ![Java CI](https://github.com/NPEX42/NPlib/workflows/Java%20CI/badge.svg) 
             Weekly Build
@@ -40,4 +40,4 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: dist/NPlib-weekly.jar
-        asset_name: NPlib-Weekly 
+        asset_name: NPlib-Weekly
